@@ -14,4 +14,14 @@ const countries = fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-11
   })
   .catch(error => {
     console.log(error)
-  })
+  });
+
+const width = 900;
+const height = 600;
+const svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
+const g = svg.append('g');
+
+const projection = d3.geoMercator();
+const path = d3.geoPath(projection);
+
+g.selectAll('path').data(countries.features).enter().append('path').attr('class', 'country').attr('d', path);
