@@ -1,4 +1,4 @@
-import { geoEqualEarth, geoPath, GeoProjection } from 'd3-geo';
+import { geoMercator, geoPath, GeoProjection } from 'd3-geo';
 import { FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
 import React from 'react';
 import { WorldAtlas } from 'topojson';
@@ -7,20 +7,21 @@ import { v4 as uuidv4 } from 'uuid';
 
 type EarthGlobeProps = {
   worldAtlas: WorldAtlas;
+  width: number;
+  height: number;
 };
 
 type EarthGlobeState = {
-  countries: FeatureCollection<Geometry, GeoJsonProperties> | null;
+  countries: FeatureCollection<Geometry, GeoJsonProperties>;
   earthGlobeSvg: React.RefObject<SVGElement>;
-};
+}; // test commit
 
 export default class EarthGlobe extends React.Component<
   EarthGlobeProps,
   EarthGlobeState
 > {
-  private scale: number;
-  private cx: number;
-  private cy: number;
+  private width: number;
+  private height: number;
   private projection: GeoProjection;
 
   constructor(props: EarthGlobeProps) {
@@ -33,36 +34,29 @@ export default class EarthGlobe extends React.Component<
       earthGlobeSvg: React.createRef(),
     };
 
-    this.scale = 200;
-    this.cx = 400;
-    this.cy = 150;
-    this.projection = geoEqualEarth()
-      .scale(this.scale)
-      .translate([this.cx, this.cy])
-      .rotate([0, 0]);
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    this.projection = geoMercator().fitSize(
+      [this.width, this.height],
+      this.state.countries
+    );
   }
 
   render() {
     return (
-      <>
-        <svg
-          width={this.scale * 3}
-          height={this.scale * 3}
-          viewBox="0 0 800 450"
-        >
-          <g>
-            {this.state.countries &&
-              this.state.countries.features.map(f => {
-                return (
-                  <path
-                    key={uuidv4()}
-                    d={geoPath().projection(this.projection)(f) as string}
-                  />
-                );
-              })}
-          </g>
-        </svg>
-      </>
+      <svg width={this.width} height={this.height}>
+        <g>
+          {this.state.countries &&
+            this.state.countries.features.map(f => {
+              return (
+                <path
+                  key={uuidv4()}
+                  d={geoPath().projection(this.projection)(f) as string}
+                />
+              );
+            })}
+        </g>
+      </svg>
     );
   }
 }
