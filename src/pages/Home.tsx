@@ -20,7 +20,13 @@ const Home = (): JSX.Element => {
       });
   }, []);
 
-  return <>{geographies && <EarthGlobe worldAtlas={geographies} />}</>;
+  return (
+    <>
+      {geographies && (
+        <EarthGlobe worldAtlas={geographies} width={100} height={100} />
+      )}
+    </>
+  );
 };
 
 export default Home;
