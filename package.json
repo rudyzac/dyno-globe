@@ -3,22 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "d3": "^7.6.1",
-    "d3-geo": "^3.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-syntax-flow": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "d3": "^7.9.0",
+    "d3-geo": "^3.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "topojson-client": "^3.1.0",
-    "typescript": "^4.4.2",
-    "uuid": "^9.0.0",
-    "web-vitals": "^2.1.0"
+    "typescript": "^4",
+    "uuid": "^11.1.0",
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,7 +30,7 @@
     "test": "react-scripts test",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": ""
   },
   "eslintConfig": {
     "extends": [
@@ -47,21 +51,21 @@
     ]
   },
   "devDependencies": {
-    "@types/d3": "^7.4.0",
-    "@types/geojson": "^7946.0.10",
-    "@types/topojson": "^3.2.3",
-    "@types/topojson-client": "^3.1.1",
-    "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.38.1",
-    "eslint": "^8.24.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.8",
-    "husky": "^8.0.0",
-    "lint-staged": "^13.0.3",
-    "netlify-cli": "^12.2.7",
-    "prettier": "^2.7.1"
+    "@types/d3": "^7.4.3",
+    "@types/geojson": "^7946.0.16",
+    "@types/topojson": "^3.2.6",
+    "@types/topojson-client": "^3.1.5",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "netlify-cli": "^19.0.2",
+    "prettier": "^3.5.3"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

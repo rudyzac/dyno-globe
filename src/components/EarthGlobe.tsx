@@ -29,7 +29,7 @@ export default class EarthGlobe extends React.Component<
     this.state = {
       countries: feature(
         this.props.worldAtlas,
-        this.props.worldAtlas.objects.countries
+        this.props.worldAtlas.objects.countries,
       ),
       earthGlobeSvg: React.createRef(),
     };
@@ -38,7 +38,7 @@ export default class EarthGlobe extends React.Component<
     this.height = window.innerHeight;
     this.projection = geoMercator().fitSize(
       [this.width, this.height],
-      this.state.countries
+      this.state.countries,
     );
   }
 
